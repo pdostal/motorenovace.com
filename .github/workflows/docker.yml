@@ -33,7 +33,7 @@ jobs:
       contents: write
       pull-requests: write
     steps:
-      - name: Auto-merge patch updates
+      - name: Auto-merge minor and patch updates
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           PR: ${{ github.event.pull_request.number }}
@@ -41,4 +41,4 @@ jobs:
         run: |
           old=${TITLE#* from }; old=${old%%-*}
           new=${TITLE##* to }; new=${new%%-*}
-          if [ "${old%.*}" = "${new%.*}" ]; then gh pr merge "$PR" --auto --squash; fi
+          if [ "${old%%.*}" = "${new%%.*}" ]; then gh pr merge "$PR" --auto --squash; fi
