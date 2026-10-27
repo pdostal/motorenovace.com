@@ -24,17 +24,3 @@ jobs:
           tags: |
             docker.io/pdostal/motorenovace:latest
             docker.io/pdostal/motorenovace:sha-${{ github.sha }}
-
-  dependabot-automerge:
-    needs: build
-    if: github.event_name == 'pull_request' && github.actor == 'dependabot[bot]'
-    runs-on: ubuntu-latest
-    permissions:
-      contents: write
-      pull-requests: write
-    steps:
-      - name: Auto-merge dependency updates
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          PR: ${{ github.event.pull_request.number }}
-        run: gh pr merge "$PR" --auto --squash
