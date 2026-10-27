@@ -71,5 +71,16 @@ foreach ($cases as [$page, $accept]) {
     echo 'FAIL ' . $page . '/lang=' . $accept . ': ' . implode('; ', $fail) . "\n";
   }
 }
-echo $failed ? $failed . ' of ' . count($cases) . " checks failed\n" : count($cases) . " renders clean\n";
+libxml_use_internal_errors(true);
+$sitemap = new DOMDocument();
+if (!$sitemap->loadXML(file_get_contents($root . '/sitemap.xml'))) {
+  $failed++;
+  $err = libxml_get_errors()[0] ?? null;
+  echo 'FAIL sitemap.xml: ' . ($err ? trim($err->message) : 'not well-formed') . "\n";
+} else {
+  echo "sitemap.xml well-formed\n";
+}
+libxml_clear_errors();
+
+echo $failed ? $failed . " of " . (count($cases) + 1) . " checks failed\n" : count($cases) . " renders clean\n";
 exit($failed ? 1 : 0);

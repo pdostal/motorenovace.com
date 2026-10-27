@@ -29,7 +29,7 @@ php tests/check.php
 php -S 127.0.0.1:8099 tests/router.php
 ```
 
-CI runs these plus `php -l`, an `xmllint` check on the sitemap and an HTTP smoke test before publishing the image.
+CI runs these plus `php -l` and an HTTP smoke test before publishing the image.
 
 ## Image maintenance
 
