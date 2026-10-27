@@ -1,18 +1,7 @@
-version: '3'
 services:
   web:
-    image: nginx:latest
-    volumes:
-      - ./web.conf:/etc/nginx/nginx.conf
-      - ./:/var/www
+    image: docker.io/pdostal/motorenovace:latest
+    build: .
     ports:
-      - 3781:80
-    depends_on:
-      - php-fpm
-  php-fpm:
-    image: bitnami/php-fpm:5.6.18-0-r01
-    volumes:
-      - .:/var/www
-    ports:
-      - "59001:9000"
-
+      - "3781:80"
+    restart: unless-stopped
