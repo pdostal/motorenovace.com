@@ -1,4 +1,4 @@
-FROM php:5.6-apache
+FROM php:apache
 RUN a2enmod rewrite
 COPY img/ /var/www/html/img
 COPY inc/ /var/www/html/inc
