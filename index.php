@@ -112,7 +112,7 @@
 ?>
 			<div id="footer">
 				<hr />
-				&copy; <a href="https://pdostal.cz/">Pavel Dostál</a>
+				&copy; <a href="https://pdostal.cz/">Pavel Dostál mladší</a>
 			</div>
 			<div class="clear"></div>
 		</div>
