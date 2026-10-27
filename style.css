@@ -1,7 +1,6 @@
-@import url(://fonts.googleapis.com/css?family=Arvo);
-@import url(://fonts.googleapis.com/css?family=Tangerine);
+@import url("https://fonts.googleapis.com/css2?family=Arvo&family=Tangerine&display=swap");
 html {
-	background-image: url("background.png");
+	background-image: url("img/background.png");
 	background-color: #523112;
 }
 body {
@@ -25,7 +24,7 @@ a {
 	font-weight: bold;
 }
 img {
-	background: url(://motorenovace.com/clock.png) no-repeat bottom right;
+	background: url("img/clock.png") no-repeat bottom right;
 	border: 5px #996633 solid;
 }
 .normimg {

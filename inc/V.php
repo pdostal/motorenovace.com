@@ -1,4 +1,4 @@
-<?
+<?php
   if ($lang == "cs") {
     $title = "V renovaci";
   } else {
@@ -7,18 +7,18 @@
 ?>
 <h2><?php echo $title; ?></h2>
 <?php echo photo("v/1.jpg", $title, ""); ?>
-<?php echo photo("v/4.jpg", $title, ""); ?><br>
+<?php echo photo("v/4.jpg", $title, ""); ?><br />
 <?php echo photo("v/9.jpg", $title, ""); ?>
-<?php echo photo("v/5.jpg", $title, ""); ?><br>
+<?php echo photo("v/5.jpg", $title, ""); ?><br />
 <?php echo photo("v/6.jpg", $title, ""); ?>
-<?php echo photo("v/8.jpg", $title, ""); ?><br>
+<?php echo photo("v/8.jpg", $title, ""); ?><br />
 <?php echo photo("v/7.jpg", $title, ""); ?>
-<?php echo photo("v/11.jpg", $title, ""); ?><br>
-<?php echo photo("v/12.jpg", $title, ""); ?><br>
+<?php echo photo("v/11.jpg", $title, ""); ?><br />
+<?php echo photo("v/12.jpg", $title, ""); ?><br />
 <?php echo photo("v/3.jpg", $title, ""); ?>
-<?php echo photo("v/13.jpg", $title, ""); ?><br>
+<?php echo photo("v/13.jpg", $title, ""); ?><br />
 <?php echo photo("v/2.jpg", $title, ""); ?>
-<?php echo photo("v/10.jpg", $title, ""); ?><br>
+<?php echo photo("v/10.jpg", $title, ""); ?><br />
 <?php echo photo("v/a.jpg", $title, ""); ?>
 <?php echo photo("v/b.jpg", $title, ""); ?>
 <?php echo photo("v/c.jpg", $title, ""); ?>

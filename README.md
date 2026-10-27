@@ -3,7 +3,7 @@
 [![Docker](https://github.com/pdostal/motorenovace.com/actions/workflows/docker.yml/badge.svg)](https://github.com/pdostal/motorenovace.com/actions/workflows/docker.yml)
 [![Docker Hub](https://img.shields.io/docker/v/pdostal/motorenovace?label=Docker%20Hub&sort=semver)](https://hub.docker.com/r/pdostal/motorenovace)
 
-Motorcycle renovation and travel website running on PHP 8.4 with Apache.
+Motorcycle renovation and travel website running on PHP 8.5 with Apache.
 
 ## Run locally
 

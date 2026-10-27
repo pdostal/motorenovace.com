@@ -2,12 +2,13 @@
 	session_start();
 	ob_start();
 	function httpinput($parametr) {
-		return htmlspecialchars(htmlspecialchars_decode($_GET[$parametr]));
+		return htmlspecialchars(htmlspecialchars_decode($_GET[$parametr] ?? ''));
 	}
 	function redirect($parametr) {
 		header("HTTP/1.1 301 Moved Permanently");
 		header("Location: ".$parametr);
 		header("Connection: close");
+		exit;
 	}
 	function geturl() {
 		if ( !empty( $_SERVER['HTTPS'] ) ) {
@@ -28,7 +29,7 @@
 	if ( !empty( $_SESSION['lang'] ) ) {
 		$lang = $_SESSION['lang'];
 	} else {
-		$lang = substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2);
+		$lang = substr($_SERVER['HTTP_ACCEPT_LANGUAGE'] ?? '', 0, 2);
 		$_SESSION['lang'] = $lang;
 	}
 	$lang_httpinput = httpinput('lang');
@@ -42,10 +43,10 @@
 		}
 	}
 	function photo($name, $title, $style) {
-		return "<a href=\"img/$name\" title=\"$title\"  rel=\"lightbox\"><img src=\"img/$name\" style=\"$style\" itemprop=\"contentURL\"></a>\n";
+		return "<a href=\"img/$name\" title=\"$title\"  rel=\"lightbox\"><img src=\"img/$name\" alt=\"$title\" style=\"$style\" itemprop=\"contentURL\" /></a>\n";
 	}
 	$page = httpinput("page");
-	if (!ereg("^[a-zA-Z0-9]", $page)) {
+	if (!preg_match('/^[a-zA-Z0-9]+$/', $page)) {
 		if ($lang == "cs") {
 			$page = "Uvod";
 		} else {
@@ -61,18 +62,18 @@
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
 	"https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="https://www.w3.org/1999/xhtml" xml:lang="cs" lang="cs"> 
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="cs" lang="cs"> 
 	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> 
-		<meta http-equiv="Content-Style-Type" content="text/css">
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /> 
+		<meta http-equiv="Content-Style-Type" content="text/css" />
   <script src="<?php echo $url; ?>lightbox/js/jquery-1.7.2.min.js"></script>
   <script src="<?php echo $url; ?>lightbox/js/lightbox.js"></script>
   <link href="<?php echo $url; ?>lightbox/css/lightbox.css" rel="stylesheet" />
-		<link rel="stylesheet" type="text/css" href="<?php echo $url; ?>style.css">
+		<link rel="stylesheet" type="text/css" href="<?php echo $url; ?>style.css" />
     <link rel="stylesheet" type="text/css" href="<?php echo $url; ?>flags/flags.css" />
-		<link rel="shortcut icon" type="image/x-icon" href="<php? echo $url; ?>img/kuk.gif">
-		<meta http-equiv="Content-Language" content="cs">
-		<meta name="keywords" content="Pavel Dostál">
+		<link rel="shortcut icon" type="image/x-icon" href="<?php echo $url; ?>img/kuk.gif" />
+		<meta http-equiv="Content-Language" content="cs" />
+		<meta name="keywords" content="Pavel Dostál" />
 		<title><?php echo $pagename; ?> | Pavel Dostál</title>
 		<script type="text/javascript">
 		  var _gaq = _gaq || [];
@@ -84,12 +85,12 @@
 		    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
 		  })();
 		</script>
-	</header>
+	</head>
 	<body>
 		<div id="body">
 			<div id="header">
         <div id="language"><?php if ($lang == "cs") { ?><a href="?lang=en"><img class="flag" src="<?php echo $url; ?>flags/en.svg" alt="anglická vlajka" /></a><img class="flag" id="selected" src="<?php echo $url; ?>flags/cz.svg" alt="česká vlajka" /><?php } else { ?><img class="flag" id="selected" src="<?php echo $url; ?>flags/en.svg" alt="english flag" /><a href="?lang=cs"><img class="flag" src="<?php echo $url; ?>flags/cz.svg" alt="czech flag" /></a><?php } ?></div>
-				<h1><img class="normimg" src="img/motorenovace.png" width="600" height="100" alt="motorenovace"></h1>
+				<h1><img class="normimg" src="img/motorenovace.png" width="600" height="100" alt="motorenovace" /></h1>
 <?php
 	if ($lang == "cs") {
 ?>
@@ -110,11 +111,10 @@
 	include($pagepath);
 ?>
 			<div id="footer">
-				<hr>
+				<hr />
 				&copy; <a href="https://pdostal.cz/">Pavel Dostál</a>
 			</div>
 			<div class="clear"></div>
 		</div>
-	</div>
 	</body>
 </html>
