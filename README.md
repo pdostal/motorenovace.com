@@ -20,7 +20,7 @@ Every push to `master` publishes these tags to Docker Hub:
 - `docker.io/pdostal/motorenovace:latest`
 - `docker.io/pdostal/motorenovace:sha-<commit>`
 
-Dependabot checks PHP and GitHub Actions weekly. Minor and patch updates merge automatically after a successful image build; major updates require review.
+Dependabot checks PHP and GitHub Actions weekly. Updates merge automatically after a successful image build.
 
 ## Image maintenance
 
